@@ -59,7 +59,7 @@ Atm_delay_effect& Atm_delay_effect::begin( int param_con ) {
   mixer7.gain(2, 0.25);
   mixer7.gain(3, 0.25);
   mixer8.gain(0, 1.0);
-  mixer9.gain(1, 0.5);		//master effect mix
+  mixer11.gain(1, 0.5);		//master effect mix
   return *this;         
 }
 
@@ -440,16 +440,16 @@ Atm_delay_effect& Atm_delay_effect::setLevel( void ) {
 	else if ( param_control == 14 ) { //crossfader master wet/dry mix
 		if ( effect_state == 0) {					//remember mix level
 			param_level == last_param_level;
-			mixer9.gain(1, param_level);
-			mixer9.gain(0, (0.99 - param_level));
+			mixer11.gain(1, param_level);
+			mixer11.gain(0, (0.99 - param_level));
 			effect_state = 1;
 		}      
 		if ( param_position > last_param_position ) {
 			if ( param_level < 0.99 ) {
 				for ( int x = 0; x < 100; x++ ) {
 					param_level += 0.001;
-					mixer9.gain(1, param_level);
-					mixer9.gain(0, (0.99 - param_level));
+					mixer11.gain(1, param_level);
+					mixer11.gain(0, (0.99 - param_level));
 					delay(1);
 			    }
 			}
@@ -458,8 +458,8 @@ Atm_delay_effect& Atm_delay_effect::setLevel( void ) {
 			if ( param_level > 0.02 ) {
 				for ( int x = 0; x < 100; x++ ) {
 					param_level -= 0.001;
-					mixer9.gain(1, param_level);
-					mixer9.gain(0, (0.99 - param_level));
+					mixer11.gain(1, param_level);
+					mixer11.gain(0, (0.99 - param_level));
 					delay(1);
 		        }
 			}
@@ -520,8 +520,8 @@ Atm_delay_effect& Atm_delay_effect::off( void ) {
   	//mixer3.gain(3, 0.0);
 	//mixer4.gain(0, 0.0);
   	//mixer4.gain(1, 0.0);
-    mixer9.gain(1, 0.0);		//master effect mix
-	mixer9.gain(0, 0.5);		//dry signal
+    mixer11.gain(1, 0.0);		//master effect mix
+	mixer11.gain(0, 0.5);		//dry signal
 	return *this;
 }
 /*

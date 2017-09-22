@@ -27,3 +27,13 @@ extern int last_state_1;
 extern int last_state_2;
 //fx_select
 extern int delay_on_off;
+extern int modulation_on_off;
+//modulation
+extern int mod_send_level_1;
+extern int mod_send_level_2;
+extern int flange_offset_level;
+extern int flange_depth_level;
+extern int flange_rate_level;
+extern int chorus_voice_level;
+extern int flange_mix_level;
+extern int chorus_mix_level;

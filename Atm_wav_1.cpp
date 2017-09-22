@@ -25,7 +25,74 @@ total rewrite, new branch
 #include <SerialFlash.h>
 #include "button_counters.h"
 
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
 
+// bb_2_r0_2, add flanger, chrorus, mixer 10
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
+// GUItool: begin automatically generated code
+AudioPlaySdWav           playSdWav2;     //xy=88,160
+AudioPlaySdWav           playSdWav1;     //xy=89,66
+AudioMixer4              mixer1;         //xy=238,84
+AudioMixer4              mixer2;         //xy=238,169
+AudioMixer4              mixer10;        //xy=304,531
+AudioEffectDelay         delay1;         //xy=309,331
+AudioMixer4              mixer3;         //xy=495,35
+AudioMixer4              mixer4;         //xy=505,131
+AudioEffectChorus        chorus1;        //xy=508,585
+AudioEffectFlange        flange1;        //xy=514,510
+AudioMixer4              mixer7;         //xy=525,381
+AudioMixer4              mixer5;         //xy=678,70
+AudioMixer4              mixer8;         //xy=750,354
+AudioMixer4              mixer6;         //xy=753,208
+AudioMixer4              mixer9;         //xy=897,310
+AudioMixer4              mixer11;        //xy=1046,240
+AudioOutputI2S           i2s1;           //xy=1210,237
+AudioConnection          patchCord1(playSdWav2, 0, mixer2, 0);
+AudioConnection          patchCord2(playSdWav2, 1, mixer2, 1);
+AudioConnection          patchCord3(playSdWav1, 0, mixer1, 0);
+AudioConnection          patchCord4(playSdWav1, 1, mixer1, 1);
+AudioConnection          patchCord5(mixer1, 0, mixer3, 0);
+AudioConnection          patchCord6(mixer1, 0, mixer6, 0);
+AudioConnection          patchCord7(mixer1, 0, mixer10, 0);
+AudioConnection          patchCord8(mixer2, 0, mixer3, 1);
+AudioConnection          patchCord9(mixer2, 0, mixer6, 1);
+AudioConnection          patchCord10(mixer2, 0, mixer10, 1);
+AudioConnection          patchCord11(mixer10, flange1);
+AudioConnection          patchCord12(mixer10, chorus1);
+AudioConnection          patchCord13(delay1, 0, mixer3, 2);
+AudioConnection          patchCord14(delay1, 0, mixer7, 0);
+AudioConnection          patchCord15(delay1, 1, mixer3, 3);
+AudioConnection          patchCord16(delay1, 1, mixer7, 1);
+AudioConnection          patchCord17(delay1, 2, mixer7, 2);
+AudioConnection          patchCord18(delay1, 2, mixer4, 0);
+AudioConnection          patchCord19(delay1, 3, mixer7, 3);
+AudioConnection          patchCord20(delay1, 3, mixer4, 1);
+AudioConnection          patchCord21(mixer3, 0, mixer5, 0);
+AudioConnection          patchCord22(mixer4, 0, mixer5, 1);
+AudioConnection          patchCord23(chorus1, 0, mixer9, 3);
+AudioConnection          patchCord24(flange1, 0, mixer9, 2);
+AudioConnection          patchCord25(mixer7, 0, mixer8, 0);
+AudioConnection          patchCord26(mixer5, delay1);
+AudioConnection          patchCord27(mixer8, 0, mixer9, 1);
+AudioConnection          patchCord28(mixer6, 0, mixer11, 0);
+AudioConnection          patchCord29(mixer9, 0, mixer11, 1);
+AudioConnection          patchCord30(mixer11, 0, i2s1, 0);
+AudioConnection          patchCord31(mixer11, 0, i2s1, 1);
+AudioControlSGTL5000     sgtl5000_1;     //xy=1075,409
+// GUItool: end automatically generated code
+
+
+
+/* Atm_rpl_repo audio system
 // GUItool: begin automatically generated code
 AudioPlaySdWav           playSdWav2;     //xy=88,160
 AudioPlaySdWav           playSdWav1;     //xy=89,66
@@ -66,7 +133,7 @@ AudioConnection          patchCord23(mixer9, 0, i2s1, 0);
 AudioConnection          patchCord24(mixer9, 0, i2s1, 1);
 AudioControlSGTL5000     sgtl5000_1;     //xy=478,626
 // GUItool: end automatically generated code
-
+*/
 //display levels
 int track_1_level;
 int track_2_level;

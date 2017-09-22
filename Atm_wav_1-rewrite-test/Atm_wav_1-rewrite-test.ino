@@ -4,6 +4,7 @@
 #include <button_counters.h> 
 #include <Atm_sev_seg.h>
 #include <Atm_delay_effect.h>
+#include <Atm_modulation_effect.h>
 #include <Atm_fx_select.h>
 #include <Automaton.h>
 #include "display_def.h"
@@ -24,6 +25,8 @@ Atm_enc_button encBtn1, encBtn2, encBtn3, encBtn4, encBtn5;
 Atm_sev_seg displayMain;
 Atm_timer delayTimer, paramTimer;
 Atm_delay_effect delaySend1, delaySend2, delayTime1, delayFb1, delayMix;
+Atm_modulation_effect modSend1, modSend2, flangeGain, chorusGain;
+
 Atm_fx_select delaySelect;
 
 void setup() {

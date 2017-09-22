@@ -53,7 +53,7 @@ Atm_master_vol& Atm_master_vol::begin( int vol_con ) {
     mixer2.gain(1, 0.5);
 	mixer6.gain(0, 0.5);	//mix 1 and 2
 	mixer6.gain(0, 0.5);
-	mixer9.gain(0, 0.5);	//mix with effects
+	mixer11.gain(0, 0.5);	//mix with effects
 	display_delay = 100;  //wait after entering screen state
     return *this;	
 }

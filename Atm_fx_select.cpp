@@ -4,6 +4,7 @@
 #include "button_counters.h"
 
 int delay_on_off;
+int modulation_on_off;
 
 Atm_fx_select& Atm_fx_select::begin( int fx_con ) {
 		static const state_t state_table[] PROGMEM = {
@@ -87,6 +88,27 @@ void Atm_fx_select::action( int id ) {
 	  	    delayMix.trigger( delayMix.EVT_CONTROL );
 		  }
 	  }
+	  if ( fx_control == 1) {
+		  if ( fx_position < 0) {
+			  fx_position = 0;
+		  }
+		  if ( fx_position > 1) {
+			  fx_position = 0;
+		  }
+		  modulation_on_off = fx_position;
+		  if ( modulation_on_off == 0) {
+	  	    modSend1.trigger( modSend1.EVT_OFF );    
+	  	    modSend2.trigger( modSend2.EVT_OFF );
+	  	    flangeGain.trigger( flangeGain.EVT_OFF );
+	  	    chorusGain.trigger( chorusGain.EVT_OFF );
+		  }
+		  else if ( modulation_on_off == 1) {
+	  	    modSend1.trigger(  modSend1.EVT_CONTROL );    
+	  	    modSend2.trigger(  modSend2.EVT_CONTROL );
+	  	    flangeGain.trigger( flangeGain.EVT_CONTROL );
+	  	    chorusGain.trigger( chorusGain.EVT_CONTROL );
+		  }
+	  }
 	  return *this;
   }
 
@@ -94,8 +116,7 @@ void Atm_fx_select::action( int id ) {
   //======================================================btns/encoders=====================
   
   Atm_fx_select& Atm_fx_select::btn1( void ) {
-    if ( (displayMain.state() == displayMain.DELAY) ) {
-  		
+    if ( (displayMain.state() == displayMain.DELAY) ) {	
 		if ( enc_button_counter_4 == 0 ) {
 			fx_position += 1;
 			displayMain.trigger( displayMain.EVT_DELAY );
